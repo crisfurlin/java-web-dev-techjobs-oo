@@ -39,4 +39,39 @@ public class JobTest {
         Job job5 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertFalse(job4.getId() == job5.getId());
     }
+
+    @Test
+    public void testJobToString() {
+        //given
+        Job job6 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String expected = "\n" +
+                "ID: " + job6.getId() + "\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n";
+        //when
+        String actual = job6.toString();
+        //then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testToStringWithEmptyValues() {
+        //given
+        Job job6 = new Job();
+        String expected = "\n" +
+                "ID: " + job6.getId() + "\n" +
+                "Name: Data not available\n" +
+                "Employer: Data not available\n" +
+                "Location: Data not available\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: Data not available\n";
+        //when
+        String actual = job6.toString();
+        //then
+        assertEquals(expected, actual);
+    }
+
 }

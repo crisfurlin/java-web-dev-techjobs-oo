@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Job {
 
+    private static final String DATA_NOT_AVAILABLE = "Data not available";
     private int id;
     private static int nextId = 1;
 
@@ -45,6 +46,54 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+
+        String nameValue;
+        if (this.name == null || this.name.equals("")) {
+            nameValue = DATA_NOT_AVAILABLE;
+        } else {
+            nameValue = this.name;
+        }
+
+        String employerValue;
+        if (this.employer == null || this.employer.getValue() == null || this.employer.getValue().equals("")) {
+            employerValue = DATA_NOT_AVAILABLE;
+        } else {
+            employerValue = this.employer.getValue();
+        }
+
+        String locationValue;
+        if (this.location == null || this.location.getValue() == null || this.location.getValue().equals("")) {
+            locationValue = DATA_NOT_AVAILABLE;
+        } else {
+            locationValue = this.location.getValue();
+        }
+
+        String positionValue;
+        if (this.positionType == null || this.positionType.getValue() == null || this.positionType.getValue().equals("")) {
+            positionValue = DATA_NOT_AVAILABLE;
+        } else {
+            positionValue = this.positionType.getValue();
+        }
+
+        String competencyValue;
+        if (this.coreCompetency == null || this.coreCompetency.getValue() == null || this.coreCompetency.getValue().equals("")) {
+            competencyValue = DATA_NOT_AVAILABLE;
+        } else {
+            competencyValue = this.coreCompetency.getValue();
+        }
+
+        return String.format("\n" +
+                "ID: %s\n" +
+                "Name: %s\n" +
+                "Employer: %s\n" +
+                "Location: %s\n" +
+                "Position Type: %s\n" +
+                "Core Competency: %s\n", this.id, nameValue,  employerValue, locationValue, positionValue,
+                competencyValue);
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
