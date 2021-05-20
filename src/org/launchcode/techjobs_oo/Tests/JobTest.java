@@ -58,7 +58,7 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringWithEmptyValues() {
+    public void testToStringWithNullValues() {
         //given
         Job job6 = new Job();
         String expected = "\n" +
@@ -70,6 +70,24 @@ public class JobTest {
                 "Core Competency: Data not available\n";
         //when
         String actual = job6.toString();
+        //then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testToStringWithEmptyValues() {
+        //given
+        Job job7 = new Job("", new Employer(""), new Location(""), new PositionType(""),
+                new CoreCompetency(""));
+        String expected = "\n" +
+                "ID: " + job7.getId() + "\n" +
+                "Name: Data not available\n" +
+                "Employer: Data not available\n" +
+                "Location: Data not available\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: Data not available\n";
+        //when
+        String actual = job7.toString();
         //then
         assertEquals(expected, actual);
     }
